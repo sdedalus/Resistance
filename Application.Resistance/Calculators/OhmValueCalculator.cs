@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Application.Resistance.Calculators
+﻿namespace Application.Resistance.Calculators
 {
-	public class OhmValueCalculator : IOhmValueCalculator, ISafeOhmValueCalculator
+	using System;
+
+	public class OhmValueCalculator : IOhmValueCalculator, ISafeOhmValueCalculator, IDecimalOhmValueCalculator
 	{
 		// a decimal return type is used to support fractional ohm resisters gold or silver in band C
 		public decimal CalculateOhmValue(ResistorColor bandAColor, ResistorColor bandBColor, ResistorColor bandCColor)
@@ -16,21 +12,26 @@ namespace Application.Resistance.Calculators
 			{
 				throw new ArgumentException("One or more color values were invalid for the given usage.");
 			}
-			
+
 			decimal? resisterValue = (bandAColor.BandA + bandBColor.BandB) * bandCColor.Multiplier;
 
 			return resisterValue.Value;
 		}
 
-
+		// this method will not be able to accurately represent the values of resistors with silver or gold in the multiplier band.
 		public int CalculateOhmValue(string bandAColor, string bandBColor, string bandCColor, string bandDColor)
 		{
-			var bandA = ResistorColor.FromDisplayName<ResistorColor>(bandAColor);
-			var bandB = ResistorColor.FromDisplayName<ResistorColor>(bandBColor);
-			var bandC = ResistorColor.FromDisplayName<ResistorColor>(bandCColor);
-			var bandD = ResistorColor.FromDisplayName<ResistorColor>(bandDColor);
+			return (int)((IDecimalOhmValueCalculator)this).CalculateOhmValue(bandAColor, bandBColor, bandCColor, bandDColor);
+		}
 
-			return (int)this.CalculateOhmValue(bandA, bandB, bandC);
-		}								  
-	}									  
-}										  
+		decimal IDecimalOhmValueCalculator.CalculateOhmValue(string bandAColor, string bandBColor, string bandCColor, string bandDColor)
+		{
+			var bandA = ResistorColor.FromDisplayName<ResistorColor>(bandAColor.ToLowerInvariant());
+			var bandB = ResistorColor.FromDisplayName<ResistorColor>(bandBColor.ToLowerInvariant());
+			var bandC = ResistorColor.FromDisplayName<ResistorColor>(bandCColor.ToLowerInvariant());
+			//var bandD = ResistorColor.FromDisplayName<ResistorColor>(bandDColor.ToLowerInvariant());
+
+			return this.CalculateOhmValue(bandA, bandB, bandC);
+		}
+	}
+}

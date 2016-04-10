@@ -1,14 +1,8 @@
-﻿using Application.Resistance.Command;
-using Microsoft.Practices.ServiceLocation;
-using Microsoft.Practices.Unity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ResistanceCommon.IOC
+﻿namespace ResistanceCommon.IOC
 {
+	using Application.Resistance.Command;
+	using Microsoft.Practices.Unity;
+
 	public static class InversionOfControlImplementation
 	{
 		private static IUnityContainer container;
@@ -17,7 +11,6 @@ namespace ResistanceCommon.IOC
 		{
 			return container;
 		}
-
 
 		internal static void Initialize()
 		{

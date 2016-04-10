@@ -1,17 +1,22 @@
 ﻿namespace Application.Resistance
 {
-	using System;
+	using AutoMapper;
+	using Calculators;
+	using Command;
+	using Commands;
+	using Mapping;
 	using Microsoft.Practices.Unity;
 	using ResistanceCommon.IOC;
-	using AutoMapper;
-	using Mapping;
+
 	public class Bootstrapper
 	{
-		private static IUnityContainer inversionOfControl;
+		private static IUnityContainer container;
+
 		public Bootstrapper(InversionOfControl inversionOfControl)
 		{
-			Bootstrapper.inversionOfControl = inversionOfControl.Container();
+			Bootstrapper.container = inversionOfControl.Container();
 		}
+
 		public void Start()
 		{
 			Configure();
@@ -20,16 +25,18 @@
 
 		private void Configure()
 		{
-
-			
+			// this could be done with convention based registration.
+			container.RegisterType<ICommandHandler<CalculateResistanceCommand, decimal>, CalculateResistanceCommandHandler>(new ContainerControlledLifetimeManager());
+			container.RegisterType<IDecimalOhmValueCalculator, OhmValueCalculator>(new ContainerControlledLifetimeManager());
 		}
 
 		private void ConfigureMap()
 		{
-			var config = new MapperConfiguration(cfg => {
+			var config = new MapperConfiguration(cfg =>
+			{
 				cfg.AddProfile<ConfigureAutomapper>();
 			});
-			inversionOfControl.RegisterInstance<IMapper>(config.CreateMapper());
+			container.RegisterInstance<IMapper>(config.CreateMapper());
 		}
 	}
 }

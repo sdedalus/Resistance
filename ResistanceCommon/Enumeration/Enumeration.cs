@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ResistanceCommon.Enumeration
+﻿namespace ResistanceCommon.Enumeration
 {
+	using System;
+	using System.Collections.Generic;
+	using System.Linq;
+	using System.Reflection;
+
 	// this came out of  Jimmy Bogard's blog https://lostechies.com/jimmybogard/2008/08/12/enumeration-classes  I'm sure it's familiar.
 	public abstract class Enumeration : IComparable
 	{

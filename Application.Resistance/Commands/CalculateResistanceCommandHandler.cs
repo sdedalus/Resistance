@@ -1,17 +1,20 @@
-﻿using Application.Resistance.Command;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Application.Resistance.Commands
+﻿namespace Application.Resistance.Commands
 {
+	using Application.Resistance.Calculators;
+	using Application.Resistance.Command;
+
 	public class CalculateResistanceCommandHandler : ICommandHandler<CalculateResistanceCommand, decimal>
 	{
+		private IDecimalOhmValueCalculator ohmCalculator;
+
+		public CalculateResistanceCommandHandler(IDecimalOhmValueCalculator ohmCalculator)
+		{
+			this.ohmCalculator = ohmCalculator;
+		}
+
 		public decimal Execute(CalculateResistanceCommand comand)
 		{
-			throw new NotImplementedException();
+			return ohmCalculator.CalculateOhmValue(comand.BandA, comand.BandB, comand.BandC, "none");
 		}
 	}
 }

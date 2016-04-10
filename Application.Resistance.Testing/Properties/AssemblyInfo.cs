@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Resistance.Host")]
+[assembly: AssemblyTitle("Application.Resistance.Testing")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Resistance.Host")]
+[assembly: AssemblyProduct("Application.Resistance.Testing")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("e5467578-45f8-4cff-98c6-1cab798cdddb")]
+[assembly: Guid("e5bf0739-1a10-44d5-8b9f-aeddedbafb78")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Application.Resistance.DataTransferObjects
+﻿namespace Application.Resistance.DataTransferObjects
 {
 	public class ResistorResponseDTO
 	{
@@ -13,6 +7,5 @@ namespace Application.Resistance.DataTransferObjects
 		public string BandCColor { get; set; }
 
 		public decimal Resistance { get; set; }
-
 	}
 }

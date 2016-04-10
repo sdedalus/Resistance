@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstraper.cs" />
+    <Compile Include="Calculators\IDecimalOhmValueCalculator.cs" />
     <Compile Include="Calculators\IOhmValueCalculator.cs" />
     <Compile Include="Calculators\ISafeOhmValueCalculator.cs" />
     <Compile Include="Calculators\OhmValueCalculator.cs" />

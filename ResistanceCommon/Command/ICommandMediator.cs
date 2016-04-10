@@ -2,6 +2,6 @@
 {
 	public interface ICommandMediator
 	{
-		TReturn Invoke<TReturn>(ICommand<TReturn> command);
+		TReturn Invoke<TCommand, TReturn>(TCommand command) where TCommand : ICommand<TReturn>;
 	}
 }

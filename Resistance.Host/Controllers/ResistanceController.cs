@@ -1,26 +1,40 @@
-﻿using Application.Resistance.Command;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Http;
-
-namespace Resistance.Host.Controllers
+﻿namespace Resistance.Host.Controllers
 {
+	using Application.Resistance.Command;
+	using Application.Resistance.Commands;
+	using Application.Resistance.DataTransferObjects;
+	using System.Web.Http;
+
 	public class ResistanceController : ApiController
 	{
+		private ICommandMediator mediator;
+
 		public ResistanceController(CommandMediator mediator)
 		{
-
+			this.mediator = mediator;
 		}
-		
-		
-		public IEnumerable<string> Get(string bandA, string bandB, string bandC)
+
+		public ResistorResponseDTO Get(string bandA, string bandB, string bandC)
 		{
-			return new string[] { "Hello", "World" };
-		}
-		
-	}
+			var response = new ResistorResponseDTO()
+			{
+				BandAColor = bandA,
+				BandBColor = bandB,
+				BandCColor = bandC
+			};
 
+			var command = new CalculateResistanceCommand()
+			{
+				BandA = bandA,
+				BandB = bandB,
+				BandC = bandC
+			};
+
+			var returnValue = mediator.Invoke<CalculateResistanceCommand, decimal>(command);
+
+			response.Resistance = returnValue;
+
+			return response;
+		}
+	}
 }

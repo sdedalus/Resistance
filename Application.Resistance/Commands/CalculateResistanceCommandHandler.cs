@@ -1,7 +1,7 @@
 ﻿namespace Application.Resistance.Commands
 {
 	using Application.Resistance.Calculators;
-	using Application.Resistance.Command;
+	using ResistanceCommon.Command;
 
 	public class CalculateResistanceCommandHandler : ICommandHandler<CalculateResistanceCommand, decimal>
 	{

@@ -1,6 +1,6 @@
 ﻿namespace Application.Resistance.Commands
 {
-	using Application.Resistance.Command;
+	using ResistanceCommon.Command;
 
 	public class CalculateResistanceCommand : ICommand<decimal>
 	{

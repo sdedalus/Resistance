@@ -2,10 +2,10 @@
 {
 	using AutoMapper;
 	using Calculators;
-	using Command;
 	using Commands;
 	using Mapping;
 	using Microsoft.Practices.Unity;
+	using ResistanceCommon.Command;
 	using ResistanceCommon.IOC;
 
 	public class Bootstrapper

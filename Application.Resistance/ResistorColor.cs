@@ -15,9 +15,9 @@
 		public static readonly ResistorColor Violet = new ResistorColor(7, "violet", 70, 7, 10000000);
 		public static readonly ResistorColor Gray = new ResistorColor(8, "gray", 80, 8, 100000000);
 		public static readonly ResistorColor White = new ResistorColor(9, "white", 90, 9, 1000000000);
-		public static readonly ResistorColor Gold = new ResistorColor(10, "gold", null, null, 0.1M, 0.05M);
-		public static readonly ResistorColor Silver = new ResistorColor(11, "silver", null, null, 0.01M, 0.1M);
-		public static readonly ResistorColor None = new ResistorColor(12, "none", 0, 0, 1, 0.2M);
+		public static readonly ResistorColor Gold = new ResistorColor(-1, "gold", null, null, 0.1M, 0.05M);
+		public static readonly ResistorColor Silver = new ResistorColor(-2, "silver", null, null, 0.01M, 0.1M);
+		public static readonly ResistorColor None = new ResistorColor(-3, "none", 0, 0, 1, 0.2M);
 
 		public decimal? BandA { get; private set; }
 		public decimal? BandB { get; private set; }
@@ -28,7 +28,7 @@
 		{
 		}
 
-		public ResistorColor(int value, string color, decimal? bandA, decimal? bandB, decimal? multiplier, Decimal? tolerance = null)
+		private ResistorColor(int value, string color, decimal? bandA, decimal? bandB, decimal? multiplier, Decimal? tolerance = null)
 			: base(value, color)
 		{
 			this.BandA = bandA;

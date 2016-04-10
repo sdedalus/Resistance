@@ -1,6 +1,6 @@
 ﻿namespace ResistanceCommon.IOC
 {
-	using Application.Resistance.Command;
+	using Command;
 	using Microsoft.Practices.Unity;
 
 	public static class InversionOfControlImplementation

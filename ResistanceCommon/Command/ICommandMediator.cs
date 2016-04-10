@@ -1,4 +1,4 @@
-﻿namespace Application.Resistance.Command
+﻿namespace ResistanceCommon.Command
 {
 	public interface ICommandMediator
 	{

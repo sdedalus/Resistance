@@ -1,4 +1,4 @@
-﻿namespace Application.Resistance.Command
+﻿namespace ResistanceCommon.Command
 {
 	using Microsoft.Practices.Unity;
 

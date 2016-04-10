@@ -1,8 +1,8 @@
 ﻿namespace Resistance.Host.Controllers
 {
-	using Application.Resistance.Command;
 	using Application.Resistance.Commands;
 	using Application.Resistance.DataTransferObjects;
+	using ResistanceCommon.Command;
 	using System.Web.Http;
 
 	public class ResistanceController : ApiController

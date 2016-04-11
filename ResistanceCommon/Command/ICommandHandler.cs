@@ -2,6 +2,11 @@
 {
 	public interface ICommandHandler<Tcommand, out TReturn> where Tcommand : ICommand<TReturn>
 	{
-		TReturn Execute(Tcommand comand);
+		/// <summary>
+		/// Executes the specified command.
+		/// </summary>
+		/// <param name="comand">The command.</param>
+		/// <returns></returns>
+		TReturn Execute(Tcommand command);
 	}
 }

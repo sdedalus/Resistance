@@ -90,7 +90,7 @@
 			var colorD = ResistorColor.FromValue<ResistorColor>(bandD);
 			var calculator = new OhmValueCalculator();
 			// we are testing the ISafeOhmValueCalculator here.
-			Assert.AreEqual(expected, ((IDecimalOhmValueCalculator)calculator).CalculateOhmValue(colorA.DisplayName, colorB.DisplayName, colorC.DisplayName, colorD.DisplayName));
+			Assert.AreEqual(expected, ((IDecimalOhmValueCalculator)calculator).CalculateOhmValue(colorA.DisplayName, colorB.DisplayName, colorC.DisplayName));
 		}
 	}
 }

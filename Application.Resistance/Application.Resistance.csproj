@@ -60,7 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bootstraper.cs" />
+    <Compile Include="Bootstrapper.cs" />
     <Compile Include="Calculators\IDecimalOhmValueCalculator.cs" />
     <Compile Include="Calculators\IOhmValueCalculator.cs" />
     <Compile Include="Calculators\ISafeOhmValueCalculator.cs" />

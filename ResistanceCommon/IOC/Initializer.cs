@@ -2,9 +2,12 @@
 {
 	public static class Initializer
 	{
+		/// <summary>
+		/// Initializes this instance.
+		/// </summary>
 		public static void Initialize()
 		{
-			InversionOfControlImplementation.Initialize();
+			UnityInversionOfControlImplementation.Initialize();
 		}
 	}
 }

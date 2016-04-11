@@ -14,7 +14,7 @@
 
 		public decimal Execute(CalculateResistanceCommand comand)
 		{
-			return ohmCalculator.CalculateOhmValue(comand.BandA, comand.BandB, comand.BandC, "none");
+			return ohmCalculator.CalculateOhmValue(comand.BandA, comand.BandB, comand.BandC);
 		}
 	}
 }

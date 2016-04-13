@@ -12,7 +12,7 @@
   },
   "files": [
 
-    "app/main.ts",
+    "app/app.ts",
     "app/app.components.ts",
     "app/services/engine.ts"
 

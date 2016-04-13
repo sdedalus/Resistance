@@ -8013,7 +8013,7 @@
     <TypeScriptCompile Include="web\app\app.component.ts">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="web\app\main.ts">
+    <TypeScriptCompile Include="web\app\app.ts">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </TypeScriptCompile>
     <TypeScriptCompile Include="web\app\services\engine.ts" />
@@ -8449,7 +8449,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>robocopy "$(ProjectDir)web" "$(ProjectDir)bin\debug\web"  *.*  /S /XO ^&amp; IF %25ERRORLEVEL%25 LEQ 1 exit 0</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

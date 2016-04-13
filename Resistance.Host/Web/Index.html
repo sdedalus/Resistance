@@ -4,21 +4,23 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
-    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <!-- 1. Load libraries -->
     <!-- IE required polyfills, in this exact order -->
     <script src="node_modules/es6-shim/es6-shim.min.js"></script>
     <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
     <script src="node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>
 
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+
     <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
     <script src="node_modules/systemjs/dist/system.src.js"></script>
     <script src="node_modules/rxjs/bundles/Rx.js"></script>
     <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
 
-    <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="/node_modules/three/three.min.js"></script>
-    <script src="scripts/Modeling.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/three/three.min.js"></script>
+    <script src="app/app.js"></script>
 
     <!-- 2. Configure SystemJS -->
     <script>
@@ -30,11 +32,18 @@
                 }
             }
         });
-        System.import('app/main')
+        System.import('app/app')
               .then(null, console.error.bind(console));
     </script>
 </head>
 <body>
-    <my-app>Loading...</my-app>
+    <app>
+        <div class="ui active inverted dimmer">
+            <div class="ui text loader">Loading</div>
+        </div>
+    </app>
+    <script>
+        System.import('app/app');
+    </script>
 </body>
 </html>

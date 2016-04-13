@@ -29,6 +29,7 @@
 
 			var mediator = new CommandMediator(ioc.Container());
 
+			// I will need to find a better way to test this.
 			Assert.AreEqual(2200, mediator.Invoke<CalculateResistanceCommand, decimal>(command));
 		}
 	}

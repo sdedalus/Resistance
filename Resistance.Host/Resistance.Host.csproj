@@ -8016,6 +8016,7 @@
     <TypeScriptCompile Include="web\app\main.ts">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="web\app\services\engine.ts" />
     <TypeScriptCompile Include="web\node_modules\lite-server\node_modules\browser-sync\node_modules\bs-recipes\recipes\webpack.typescript.react\src\components\HelloWorld.tsx" />
     <TypeScriptCompile Include="web\node_modules\lite-server\node_modules\browser-sync\node_modules\bs-recipes\recipes\webpack.typescript.react\src\main.tsx" />
     <TypeScriptCompile Include="web\node_modules\lite-server\node_modules\browser-sync\node_modules\bs-recipes\recipes\webpack.typescript.react\typings\browser.d.ts" />

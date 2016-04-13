@@ -13,7 +13,8 @@
   "files": [
 
     "app/main.ts",
-    "app/app.components.ts"
+    "app/app.components.ts",
+    "app/services/engine.ts"
 
   ],
   "exclude": [

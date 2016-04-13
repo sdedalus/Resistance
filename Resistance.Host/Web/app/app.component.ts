@@ -1,4 +1,5 @@
 ﻿import {Component} from 'angular2/core';
+import { Engine } from "./services/engine";
 
 export class Color {
     id: number;
@@ -10,7 +11,11 @@ export class Color {
     selector: 'my-app',
     templateUrl: '../views/myfirst.html'
 })
-export class AppComponent { }
+export class AppComponent {
+    constructor() {
+        new Engine(document.getElementById("container"));
+    }
+}
 
 var COLORS: Color[] = [
     { "id": 0, "name": "black", "value": 0x000000 },

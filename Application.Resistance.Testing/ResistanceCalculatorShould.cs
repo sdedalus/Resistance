@@ -3,6 +3,7 @@
 	using Calculators;
 	using NUnit.Framework;
 	using Resistance;
+	using System;
 
 	public class ResistanceCalculatorShould
 	{
@@ -62,6 +63,48 @@
 			var calculator = new OhmValueCalculator();
 			// we are testing IOhmValueCalculator here
 			Assert.AreEqual(expected, calculator.CalculateOhmValue(colorA.DisplayName, colorB.DisplayName, colorC.DisplayName, colorD.DisplayName));
+		}
+
+		[TestCase("", "", "", "")]
+		[TestCase("magenta", "desert sunset", "Burnt orange", "the happy tree color")]
+		[TestCase("maroon", "other color", "spray tan", "ginger")]
+		[TestCase("lavender", "burnt umber", "bacon", "")]
+		[TestCase("teal", "", "did i use teal yet?", "")]
+		public void CalculateResistanceForInvalidColorChoicesUsingIntegerReturnTypeOverload(string bandA, string bandB, string bandC, string bandD)
+		{
+			var calculator = new OhmValueCalculator();
+			// we are testing IOhmValueCalculator here
+
+			try
+			{
+				calculator.CalculateOhmValue(bandA, bandB, bandC, bandD);
+				Assert.True(false);
+			}
+			catch (ArgumentException)
+			{
+				Assert.True(true);
+			}
+		}
+
+		[TestCase("", "", "", "")]
+		[TestCase("magenta", "desert sunset", "Burnt orange", "the happy tree color")]
+		[TestCase("maroon", "other color", "spray tan", "ginger")]
+		[TestCase("lavender", "burnt umber", "bacon", "")]
+		[TestCase("teal", "", "did i use teal yet?", "")]
+		public void CalculateResistanceForInvalidColorChoicesUsingDecimalReturnTypeOverload(string bandA, string bandB, string bandC, string bandD)
+		{
+			var calculator = new OhmValueCalculator();
+			// we are testing IOhmValueCalculator here
+
+			try
+			{
+				((IDecimalOhmValueCalculator)calculator).CalculateOhmValue(bandA, bandB, bandC, bandD);
+				Assert.True(false);
+			}
+			catch (ArgumentException)
+			{
+				Assert.True(true);
+			}
 		}
 
 		[TestCase(1, 0, 0, 1, 10)]

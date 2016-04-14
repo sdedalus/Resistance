@@ -80,7 +80,7 @@
 				calculator.CalculateOhmValue(bandA, bandB, bandC, bandD);
 				Assert.True(false);
 			}
-			catch (ArgumentException)
+			catch (ApplicationException)
 			{
 				Assert.True(true);
 			}

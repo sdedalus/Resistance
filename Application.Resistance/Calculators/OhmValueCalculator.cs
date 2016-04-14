@@ -16,7 +16,7 @@
 		{
 			if (bandAColor.BandA == null || bandBColor.BandB == null || bandCColor.Multiplier == null)
 			{
-				throw new ArgumentException("One or more color values were invalid for the given usage.");
+				throw new ApplicationException("One or more color values were invalid for the given usage.");
 			}
 
 			decimal? resisterValue = (bandAColor.BandA + bandBColor.BandB) * bandCColor.Multiplier;

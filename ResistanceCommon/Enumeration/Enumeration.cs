@@ -167,7 +167,7 @@
 			if (matchingItem == null)
 			{
 				var message = string.Format("'{0}' is not a valid {1} in {2}", value, description, typeof(T));
-				throw new ArgumentException(message);
+				throw new ApplicationException(message);
 			}
 
 			return matchingItem;

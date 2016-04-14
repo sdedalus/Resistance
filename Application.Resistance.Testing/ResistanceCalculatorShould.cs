@@ -98,10 +98,10 @@
 
 			try
 			{
-				((IDecimalOhmValueCalculator)calculator).CalculateOhmValue(bandA, bandB, bandC, bandD);
+				((IDecimalOhmValueCalculator)calculator).CalculateOhmValue(bandA, bandB, bandC);
 				Assert.True(false);
 			}
-			catch (ArgumentException)
+			catch (ApplicationException)
 			{
 				Assert.True(true);
 			}

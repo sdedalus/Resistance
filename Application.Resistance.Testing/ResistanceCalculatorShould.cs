@@ -94,7 +94,7 @@
 		public void CalculateResistanceForInvalidColorChoicesUsingDecimalReturnTypeOverload(string bandA, string bandB, string bandC, string bandD)
 		{
 			var calculator = new OhmValueCalculator();
-			// we are testing IOhmValueCalculator here
+			// we are testing IDecimalOhmValueCalculator here
 
 			try
 			{

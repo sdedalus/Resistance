@@ -1,0 +1,138 @@
+﻿/// <reference path="../typings/main/ambient/three/index.d.ts" />
+import { Directive, ElementRef, Input, } from 'angular2/core';
+import { ColorSelectionService } from './services/ColorSelectionService';
+// import {} from '../node_modules/three/three.min.js'
+@Directive({
+    selector: '[extendRender]'
+})
+
+export class ExtendRenderDirective {
+    public scene: THREE.Scene;
+    public camera: THREE.Camera;
+    public renderer: THREE.Renderer;
+    public resistorBase: THREE.Mesh;
+    public resistorWire: THREE.Mesh
+    public resistorBandA: THREE.Mesh;
+    public resistorBandB: THREE.Mesh;
+    public resistorBandC: THREE.Mesh;
+    public resistorBandD: THREE.Mesh;
+
+    public materialBandA: THREE.MeshBasicMaterial
+    public materialBandB: THREE.MeshBasicMaterial
+    public materialBandC: THREE.MeshBasicMaterial
+    public materialBandD: THREE.MeshBasicMaterial
+
+    public colors: ColorSelectionService
+    public renderWidth: number;
+    public renderHeight: number;
+    public zRotation: number = Math.PI / 2;
+    constructor(public el: ElementRef, public colorSelection: ColorSelectionService) {
+        this.colors = colorSelection;
+        //el.nativeElement.style // it should be possible to detect bootstrap settings on div
+        this.renderWidth = el.nativeElement.offsetWidth / 2; //el.nativeElement.innerWidth
+        this.renderHeight = this.renderWidth; // el.nativeElement.offsetHeight; //el.nativeElement.innerHeight
+
+        this.scene = new THREE.Scene();
+        this.camera = new THREE.PerspectiveCamera(75, this.renderWidth / this.renderHeight, 0.1, 1000);
+        this.renderer = new THREE.WebGLRenderer();
+        //this.renderer.setSize(el.nativeElement.innerWidth, el.nativeElement.innerHeight);
+        this.renderer.setSize(this.renderWidth, this.renderHeight);
+        el.nativeElement.appendChild(this.renderer.domElement)
+
+        this.createResistorBase();
+        this.createResistorWire();
+        this.createResistorBandA();
+        this.createResistorBandB();
+        this.createResistorBandC();
+        this.createResistorBandD();
+
+        this.camera.position.z = 5.5;
+
+        this.render();
+    }
+
+    createResistorBase() {
+        var geometry = new THREE.CylinderGeometry(.25, .25, 2.5);
+        var material = new THREE.MeshBasicMaterial({ color: 0xccccb3 });
+        this.resistorBase = new THREE.Mesh(geometry, material);
+        this.resistorBase.rotation.z = this.zRotation;
+        this.scene.add(this.resistorBase);
+    }
+
+    createResistorBandA() {
+        var geometry = new THREE.CylinderGeometry(.251, .251, .1);
+        this.materialBandA = new THREE.MeshBasicMaterial({ color: 0xccccb3 });
+        this.resistorBandA = new THREE.Mesh(geometry, this.materialBandA);
+        this.resistorBandA.position.x = -1;
+        this.resistorBandA.rotation.z = this.zRotation;
+        this.scene.add(this.resistorBandA);
+    }
+
+    createResistorBandB() {
+        var geometry = new THREE.CylinderGeometry(.251, .251, .1);
+        this.materialBandB = new THREE.MeshBasicMaterial({ color: 0xccccb3 });
+        this.resistorBandB = new THREE.Mesh(geometry, this.materialBandB);
+        this.resistorBandB.position.x = -.75;
+        this.resistorBandB.rotation.z = this.zRotation;
+        this.scene.add(this.resistorBandB);
+    }
+
+    createResistorBandC() {
+        var geometry = new THREE.CylinderGeometry(.251, .251, .1);
+        this.materialBandC = new THREE.MeshBasicMaterial({ color: 0xccccb3 });
+        this.resistorBandC = new THREE.Mesh(geometry, this.materialBandC);
+        this.resistorBandC.position.x = -.5;
+        this.resistorBandC.rotation.z = this.zRotation;
+        this.scene.add(this.resistorBandC);
+    }
+
+    createResistorBandD() {
+        var geometry = new THREE.CylinderGeometry(.251, .251, .1);
+        this.materialBandD = new THREE.MeshBasicMaterial({ color: 0xccccb3 });
+        this.resistorBandD = new THREE.Mesh(geometry, this.materialBandD);
+        this.resistorBandD.rotation.z = this.zRotation;
+        this.scene.add(this.resistorBandD);
+    }
+
+    createResistorWire() {
+        var geometry = new THREE.CylinderGeometry(.025, .025, 4);
+        var material = new THREE.MeshBasicMaterial({ color: 0xC0C0C0 });
+        this.resistorWire = new THREE.Mesh(geometry, material);
+        this.resistorWire.rotation.z = this.zRotation;
+        this.scene.add(this.resistorWire);
+    }
+
+    rotate() {
+        // this just seems to rotate each primitive from it's center rather than from the point of origin.
+        //this.resistorBase.rotation.y += 0.01;
+        //this.resistorWire.rotation.y += 0.01;
+        //this.resistorBandA.rotation.y += 0.01;
+        //this.resistorBandB.rotation.y += 0.01;
+        //this.resistorBandC.rotation.y += 0.01;
+        //this.resistorBandD.rotation.y += 0.01;
+    }
+
+    setColors() {
+        if (this.colors != null) {
+            if (this.colors.BandA != null) {
+                this.materialBandA.color = new THREE.Color(this.colors.BandA.value);
+            }
+            if (this.colors.BandB != null) {
+                this.materialBandB.color = new THREE.Color(this.colors.BandB.value);
+            }
+            if (this.colors.BandC != null) {
+                this.materialBandC.color = new THREE.Color(this.colors.BandC.value);
+            }
+            if (this.colors.BandD != null) {
+                this.materialBandD.color = new THREE.Color(this.colors.BandD.value);
+            }
+        }
+    }
+
+    render() {
+        requestAnimationFrame(() => this.render());
+        this.rotate();
+        this.setColors();
+        this.renderer.render(this.scene, this.camera);
+    }
+}

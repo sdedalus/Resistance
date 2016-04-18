@@ -12,9 +12,11 @@
   },
   "files": [
 
-    "app/app.ts",
+    "app/main.ts",
     "app/app.components.ts",
-    "app/services/engine.ts"
+    "app/services/ColorSelectionService.ts",
+    "app/services/ResistorColor.ts",
+    "app/services/ResistorColorChoices.ts"
 
   ],
   "exclude": [

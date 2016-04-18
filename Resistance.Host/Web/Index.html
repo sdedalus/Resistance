@@ -20,30 +20,23 @@
 
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="node_modules/three/three.min.js"></script>
-    <script src="app/app.js"></script>
-
     <!-- 2. Configure SystemJS -->
     <script>
         System.config({
+            globalEvaluationScope: false,
             packages: {
                 app: {
                     format: 'register',
                     defaultExtension: 'js'
+
                 }
             }
         });
-        System.import('app/app')
+        System.import('./app/main')
               .then(null, console.error.bind(console));
     </script>
 </head>
 <body>
-    <app>
-        <div class="ui active inverted dimmer">
-            <div class="ui text loader">Loading</div>
-        </div>
-    </app>
-    <script>
-        System.import('app/app');
-    </script>
+    <resister-app>Loading...</resister-app>
 </body>
 </html>

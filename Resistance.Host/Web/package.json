@@ -20,7 +20,6 @@
     "zone.js": "0.6.8",
     "three": "0.75.0",
     "semantic-ui-loader": "^2.1.7",
-    "typescript": "1.8.9",
     "bootstrap": "3.3.6",
     "jquery": "2.2.3"
   },

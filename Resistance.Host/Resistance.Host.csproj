@@ -163,11 +163,11 @@
     <TypeScriptCompile Include="web\app\app.component.ts">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="web\app\bandASelection.component.ts" />
     <TypeScriptCompile Include="web\app\main.ts">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </TypeScriptCompile>
     <TypeScriptCompile Include="web\app\extendRender.directive.ts" />
-    <TypeScriptCompile Include="web\app\services\engine.ts" />
     <TypeScriptCompile Include="web\app\services\ColorSelectionService.ts" />
     <TypeScriptCompile Include="web\app\services\ResistorColor.ts" />
     <TypeScriptCompile Include="web\app\services\ResistorColorChoices.ts" />

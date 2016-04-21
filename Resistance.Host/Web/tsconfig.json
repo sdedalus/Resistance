@@ -11,9 +11,10 @@
     "noImplicitAny": false
   },
   "files": [
-
     "app/main.ts",
-    "app/app.components.ts",
+    "app/app.component.ts",
+    "app/bandASelection.component.ts",
+    "app/extendRender.directive.ts",
     "app/services/ColorSelectionService.ts",
     "app/services/ResistorColor.ts",
     "app/services/ResistorColorChoices.ts"

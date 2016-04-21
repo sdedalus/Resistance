@@ -1,6 +1,7 @@
 ﻿import {Component} from 'angular2/core';
 import { ExtendRenderDirective } from './extendRender.directive';
-import { ColorSelectionService } from './services/ColorSelectionService'
+import { ColorSelectionService } from './services/ColorSelectionService';
+import { ResistorColorChoices } from './services/ResistorColorChoices';
 
 //import { Engine } from "./services/engine";
 
@@ -19,7 +20,12 @@ import { ColorSelectionService } from './services/ColorSelectionService'
     directives: [ExtendRenderDirective]
 })
 export class AppComponent {
-    constructor() {
+    constructor(public colorSelection: ColorSelectionService) {
+        var choices = new ResistorColorChoices();
+        colorSelection.BandA = choices.Black;
+        colorSelection.BandB = choices.Red;
+        colorSelection.BandC = choices.Red;
+        colorSelection.BandD = choices.Silver;
         //alert("test");
         //new Engine(document.getElementById("container"));
     }

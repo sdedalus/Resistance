@@ -1,4 +1,4 @@
-System.register(['angular2/core', './extendRender.directive', './services/ColorSelectionService'], function(exports_1, context_1) {
+System.register(['angular2/core', './extendRender.directive', './services/ColorSelectionService', './services/ResistorColorChoices'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './extendRender.directive', './services/ColorS
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, extendRender_directive_1, ColorSelectionService_1;
+    var core_1, extendRender_directive_1, ColorSelectionService_1, ResistorColorChoices_1;
     var AppComponent;
     return {
         setters:[
@@ -22,6 +22,9 @@ System.register(['angular2/core', './extendRender.directive', './services/ColorS
             },
             function (ColorSelectionService_1_1) {
                 ColorSelectionService_1 = ColorSelectionService_1_1;
+            },
+            function (ResistorColorChoices_1_1) {
+                ResistorColorChoices_1 = ResistorColorChoices_1_1;
             }],
         execute: function() {
             //import { Engine } from "./services/engine";
@@ -31,7 +34,13 @@ System.register(['angular2/core', './extendRender.directive', './services/ColorS
             //    value: number;
             //}
             AppComponent = (function () {
-                function AppComponent() {
+                function AppComponent(colorSelection) {
+                    this.colorSelection = colorSelection;
+                    var choices = new ResistorColorChoices_1.ResistorColorChoices();
+                    colorSelection.BandA = choices.Black;
+                    colorSelection.BandB = choices.Red;
+                    colorSelection.BandC = choices.Red;
+                    colorSelection.BandD = choices.Silver;
                     //alert("test");
                     //new Engine(document.getElementById("container"));
                 }
@@ -44,7 +53,7 @@ System.register(['angular2/core', './extendRender.directive', './services/ColorS
                         providers: [ColorSelectionService_1.ColorSelectionService],
                         directives: [extendRender_directive_1.ExtendRenderDirective]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [ColorSelectionService_1.ColorSelectionService])
                 ], AppComponent);
                 return AppComponent;
             }());

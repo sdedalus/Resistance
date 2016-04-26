@@ -112,7 +112,7 @@ export class ExtendRenderDirective {
     }
 
     resize() {
-        this.renderWidth = this.container.offsetWidth / 2;
+        this.renderWidth = this.container.offsetWidth;
         this.renderHeight = this.renderWidth; // this.container.offsetHeight; //this.container.innerHeight
         this.renderer.setSize(this.renderWidth, this.renderHeight);
     }

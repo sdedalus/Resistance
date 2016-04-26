@@ -2,6 +2,7 @@
 import { ExtendRenderDirective } from './extendRender.directive';
 import { ColorSelectionService } from './services/ColorSelectionService';
 import { ResistorColorChoices } from './services/ResistorColorChoices';
+import { ResistorColor } from './services/ResistorColor'
 
 //import { Engine } from "./services/engine";
 
@@ -13,20 +14,21 @@ import { ResistorColorChoices } from './services/ResistorColorChoices';
 
 @Component({
     selector: 'resister-app',
-    template: "<div class='row' > <div class='span4' extendRender></div> </div>",
+    templateUrl: "/views/resistorView.html",
     // registering the ColorSelectionService with DI is just a quick way to get
     // something working and needs to be replaced with a more robust solution.
     providers: [ColorSelectionService],
     directives: [ExtendRenderDirective]
 })
 export class AppComponent {
+    public choices: ResistorColorChoices = new ResistorColorChoices();
+    public selection: ColorSelectionService;
+
     constructor(public colorSelection: ColorSelectionService) {
-        var choices = new ResistorColorChoices();
-        colorSelection.BandA = choices.Black;
-        colorSelection.BandB = choices.Red;
-        colorSelection.BandC = choices.Red;
-        colorSelection.BandD = choices.Silver;
-        //alert("test");
-        //new Engine(document.getElementById("container"));
+        this.selection = colorSelection;
+        colorSelection.BandA = this.choices.Black;
+        colorSelection.BandB = this.choices.Red;
+        colorSelection.BandC = this.choices.Red;
+        colorSelection.BandD = this.choices.Silver;
     }
 }

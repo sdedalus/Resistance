@@ -14,7 +14,7 @@ export class ResistorColorChoices {
     public Silver: ResistorColor = { "id": -2, "name": "silver", "value": 0xC0C0C0 };
     public None: ResistorColor = { "id": -3, "name": "none", "value": 0xe6ccb3 };
 
-    public COLORS: ResistorColor[] = [
+    public Colors: ResistorColor[] = [
         this.Black,
         this.Brown,
         this.Red,

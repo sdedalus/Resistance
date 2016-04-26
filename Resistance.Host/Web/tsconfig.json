@@ -10,6 +10,11 @@
     "removeComments": false,
     "noImplicitAny": false
   },
+  "exclude": [
+    "node_modules",
+    "typings/main",
+    "typings/main.d.ts"
+  ],
   "files": [
     "app/main.ts",
     "app/app.component.ts",
@@ -18,11 +23,5 @@
     "app/services/ColorSelectionService.ts",
     "app/services/ResistorColor.ts",
     "app/services/ResistorColorChoices.ts"
-
-  ],
-  "exclude": [
-    "node_modules",
-    "typings/main",
-    "typings/main.d.ts"
   ]
 }

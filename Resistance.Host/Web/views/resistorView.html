@@ -1,0 +1,22 @@
+﻿<div class='row'>
+    <div class='span2'>odd</div>
+    <div class='col-xs-12' extendRender></div>
+</div>
+<div class="row">
+    <div class='col-xs-3'>
+        <select class='form-control' [(ngModel)]="selection.BandA">
+            <option *ngFor="#color of choices.Colors" [ngValue]="color">{{ color.name }}</option>
+        </select>
+        <select class='form-control' [(ngModel)]="selection.BandB">
+            <option *ngFor="#color of choices.Colors" [ngValue]="color">{{ color.name }}</option>
+        </select>
+        <select class='form-control' [(ngModel)]="selection.BandC">
+            <option *ngFor="#color of choices.Colors" [ngValue]="color">{{ color.name }}</option>
+        </select>
+        <select class='form-control' [(ngModel)]="selection.BandD">
+            <option *ngFor="#color of choices.Colors" [ngValue]="color">{{ color.name }}</option>
+        </select>
+        <!--<h3>You have selected: {{choices.Colors}}</h3>-->
+        <h3>You have selected: {{ selection.BandA.name }}</h3>
+    </div>
+</div>

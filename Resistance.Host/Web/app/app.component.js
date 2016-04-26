@@ -36,18 +36,17 @@ System.register(['angular2/core', './extendRender.directive', './services/ColorS
             AppComponent = (function () {
                 function AppComponent(colorSelection) {
                     this.colorSelection = colorSelection;
-                    var choices = new ResistorColorChoices_1.ResistorColorChoices();
-                    colorSelection.BandA = choices.Black;
-                    colorSelection.BandB = choices.Red;
-                    colorSelection.BandC = choices.Red;
-                    colorSelection.BandD = choices.Silver;
-                    //alert("test");
-                    //new Engine(document.getElementById("container"));
+                    this.choices = new ResistorColorChoices_1.ResistorColorChoices();
+                    this.selection = colorSelection;
+                    colorSelection.BandA = this.choices.Black;
+                    colorSelection.BandB = this.choices.Red;
+                    colorSelection.BandC = this.choices.Red;
+                    colorSelection.BandD = this.choices.Silver;
                 }
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'resister-app',
-                        template: "<div class='row' > <div class='span4' extendRender></div> </div>",
+                        templateUrl: "/views/resistorView.html",
                         // registering the ColorSelectionService with DI is just a quick way to get
                         // something working and needs to be replaced with a more robust solution.
                         providers: [ColorSelectionService_1.ColorSelectionService],

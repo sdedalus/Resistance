@@ -10,6 +10,8 @@ export class ExtendRenderDirective {
     public scene: THREE.Scene;
     public camera: THREE.Camera;
     public renderer: THREE.Renderer;
+    public container: any;
+
     public resistorBase: THREE.Mesh;
     public resistorWire: THREE.Mesh
     public resistorBandA: THREE.Mesh;
@@ -28,17 +30,17 @@ export class ExtendRenderDirective {
     public zRotation: number = Math.PI / 2;
     constructor(public el: ElementRef, public colorSelection: ColorSelectionService) {
         this.colors = colorSelection;
-        //el.nativeElement.style // it should be possible to detect bootstrap settings on div
-        this.renderWidth = el.nativeElement.offsetWidth / 2; //el.nativeElement.innerWidth
-        this.renderHeight = this.renderWidth; // el.nativeElement.offsetHeight; //el.nativeElement.innerHeight
+        this.container = el.nativeElement; //.style // it should be possible to detect bootstrap settings on div
+        this.renderWidth = this.container.offsetWidth; //this.container.innerWidth
+        this.renderHeight = this.renderWidth; // this.container.offsetHeight; //this.container.innerHeight
 
         this.scene = new THREE.Scene();
         this.camera = new THREE.PerspectiveCamera(75, this.renderWidth / this.renderHeight, 0.1, 1000);
         this.camera.lookAt(new THREE.Vector3(0, 0, 0));
         this.renderer = new THREE.WebGLRenderer();
-        //this.renderer.setSize(el.nativeElement.innerWidth, el.nativeElement.innerHeight);
+        //this.renderer.setSize(this.container.innerWidth, this.container.innerHeight);
         this.renderer.setSize(this.renderWidth, this.renderHeight);
-        el.nativeElement.appendChild(this.renderer.domElement)
+        this.container.appendChild(this.renderer.domElement)
 
         this.createResistorBase();
         this.createResistorWire();
@@ -53,7 +55,7 @@ export class ExtendRenderDirective {
     }
 
     createResistorBase() {
-        var geometry = new THREE.CylinderGeometry(.25, .25, 2.5, 500);
+        var geometry = new THREE.CylinderGeometry(.25, .25, 2.5, 1000);
         var material = new THREE.MeshBasicMaterial({ color: 0xccccb3 });
         this.resistorBase = new THREE.Mesh(geometry, material);
         this.resistorBase.rotation.z = this.zRotation;
@@ -61,7 +63,7 @@ export class ExtendRenderDirective {
     }
 
     createResistorBandA() {
-        var geometry = new THREE.CylinderGeometry(.251, .251, .1, 500);
+        var geometry = new THREE.CylinderGeometry(.251, .251, .1, 1000);
         this.materialBandA = new THREE.MeshBasicMaterial({ color: 0xccccb3 });
         this.resistorBandA = new THREE.Mesh(geometry, this.materialBandA);
         this.resistorBandA.position.x = -1;
@@ -70,7 +72,7 @@ export class ExtendRenderDirective {
     }
 
     createResistorBandB() {
-        var geometry = new THREE.CylinderGeometry(.251, .251, .1, 500);
+        var geometry = new THREE.CylinderGeometry(.251, .251, .1, 1000);
         this.materialBandB = new THREE.MeshBasicMaterial({ color: 0xccccb3 });
         this.resistorBandB = new THREE.Mesh(geometry, this.materialBandB);
         this.resistorBandB.position.x = -.75;
@@ -79,7 +81,7 @@ export class ExtendRenderDirective {
     }
 
     createResistorBandC() {
-        var geometry = new THREE.CylinderGeometry(.251, .251, .1, 500);
+        var geometry = new THREE.CylinderGeometry(.251, .251, .1, 1000);
         this.materialBandC = new THREE.MeshBasicMaterial({ color: 0xccccb3 });
         this.resistorBandC = new THREE.Mesh(geometry, this.materialBandC);
         this.resistorBandC.position.x = -.5;
@@ -88,7 +90,7 @@ export class ExtendRenderDirective {
     }
 
     createResistorBandD() {
-        var geometry = new THREE.CylinderGeometry(.251, .251, .1, 500);
+        var geometry = new THREE.CylinderGeometry(.251, .251, .1, 1000);
         this.materialBandD = new THREE.MeshBasicMaterial({ color: 0xccccb3 });
         this.resistorBandD = new THREE.Mesh(geometry, this.materialBandD);
         this.resistorBandD.rotation.z = this.zRotation;
@@ -96,7 +98,7 @@ export class ExtendRenderDirective {
     }
 
     createResistorWire() {
-        var geometry = new THREE.CylinderGeometry(.025, .025, 4, 500);
+        var geometry = new THREE.CylinderGeometry(.025, .025, 4, 1000);
         var material = new THREE.MeshBasicMaterial({ color: 0xC0C0C0 });
         this.resistorWire = new THREE.Mesh(geometry, material);
         this.resistorWire.rotation.z = this.zRotation;
@@ -107,6 +109,12 @@ export class ExtendRenderDirective {
         // this just seems to rotate each primitive from it's center rather than from the point of origin.
         this.camera.translateOnAxis(new THREE.Vector3(1, 0, 0), .1);
         this.camera.lookAt(new THREE.Vector3(0, 0, 0));
+    }
+
+    resize() {
+        this.renderWidth = this.container.offsetWidth / 2;
+        this.renderHeight = this.renderWidth; // this.container.offsetHeight; //this.container.innerHeight
+        this.renderer.setSize(this.renderWidth, this.renderHeight);
     }
 
     setColors() {
@@ -129,6 +137,7 @@ export class ExtendRenderDirective {
     render() {
         requestAnimationFrame(() => this.render());
         this.rotate();
+        this.resize();
         this.setColors();
         this.renderer.render(this.scene, this.camera);
     }

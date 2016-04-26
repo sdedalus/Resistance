@@ -138,6 +138,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="web\package.json" />
+    <None Include="web\style\resisterStyle.less" />
     <None Include="web\tsconfig.json" />
     <None Include="web\typings.json" />
   </ItemGroup>
@@ -157,13 +158,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="web\Index.html" />
-    <Content Include="web\views\MyFirst.html" />
+    <Content Include="web\views\resistorView.html" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="web\app\app.component.ts">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="web\app\bandASelection.component.ts" />
     <TypeScriptCompile Include="web\app\main.ts">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </TypeScriptCompile>
